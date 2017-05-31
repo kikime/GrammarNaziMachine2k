@@ -46,3 +46,6 @@ except KeyboardInterrupt:
 
 except:
     print("Something went wrong")
+
+with open("db.txt", 'w') as f:
+    f.write(str(corrected))
