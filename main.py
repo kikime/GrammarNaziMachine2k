@@ -60,3 +60,5 @@ except:
 
 with open("db.txt", 'w') as f:
     f.write(str(corrected))
+
+print("See you soon")
