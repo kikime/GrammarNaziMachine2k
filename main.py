@@ -7,14 +7,19 @@ import sys
 print("GrammazNaziBot2k loading...")
 
 corrected = 0
-with open("db.txt") as f:
-    try:
-        corrected = int(f.read_line())
-    except ValueError:
-        print("Error reading db.txt. Assuming 0 corrected people.")
-        corrected = 0
+try:
+    with open("db.txt", 'r') as f:
+        try:
+            corrected = int(f.read_line())
+        except ValueError:
+            print("Error reading db.txt. Assuming 0 corrected people.")
+except FileNotFoundError:
+    print("db.txt not found.")
+    print("Creating it.")
+    with open("db.txt", 'w') as f:
+        f.write('0\n')
 
-print("Already corrected {} people.")
+print("Already corrected {} people.".format(corrected))
 print("Bot loaded. Let's correct them!")
 
 needs_fix_he_she   = re.compile(r'(he\s*(/|\s+or\s+)\s*she|she\s*(/|\s+or\s+)\s*he)', re.IGNORECASE)
