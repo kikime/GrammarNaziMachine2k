@@ -10,7 +10,7 @@ corrected = 0
 try:
     with open("db.txt", 'r') as f:
         try:
-            corrected = int(f.read_line())
+            corrected = int(f.readline())
         except ValueError:
             print("Error reading db.txt. Assuming 0 corrected people.")
 except FileNotFoundError:
