@@ -40,11 +40,11 @@ try:
                 if re.search(needs_fix_he_she, comment.body):
                     comment.reply("You may use the *gender-neutral*, *singular* `they` when talking about a person with unknown gender.  \nClick [this](https://en.wikipedia.org/wiki/Singular_they) for more info.  \nI've corrected {} people before you.\n\n^Beep ^blop ^I'm ^a ^bot. ^I ^said ^beep ^blop ^I'm ^a ^bot.  \n^If ^there's ^something ^wrong ^please ^message ^SteveCCL.".format(corrected))
                     corrected += 1
-                    print("Corrected {}".format(comment))
+                    print("Corrected #{}, {} ({})".format(corrected, comment.author.name, comment))
                 elif re.search(needs_fix_his_hers, comment.body):
                     comment.reply("You may use the *gender-neutral*, *singular* `their` when talking about a person with unknown gender.  \nClick [this](https://en.wikipedia.org/wiki/Singular_they) for more info.  \nI've corrected {} people before you.\n\n^Beep ^blop ^I'm ^a ^bot. ^I ^said ^beep ^blop ^I'm ^a ^bot.  \n^If ^there's ^something ^wrong ^please ^message ^SteveCCL.".format(corrected))
                     corrected += 1
-                    print("Corrected {}".format(comment))
+                    print("Corrected #{}, {} ({})".format(corrected, comment.author.name, comment))
 
         except:
             print("Something went wrong")
