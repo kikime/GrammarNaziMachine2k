@@ -1,8 +1,8 @@
-import client_data
-
-import praw
+import os
 import re
 import time
+
+import praw
 
 print("GrammazNaziBot2k loading...")
 
@@ -27,10 +27,10 @@ needs_fix_his_hers = re.compile(r'\b(his\s*(/|\s+or\s+)\s*hers|hers\s*(/|\s+or\s
 
 reddit = praw.Reddit(
     user_agent    = 'GrammarNaziMachine2k 007 (by /u/SteveCCL)',
-    client_id     = client_data.client_id,
-    client_secret = client_data.client_secret,
-    username      = client_data.username,
-    password      = client_data.password
+    client_id     = os.environ['client_id'],
+    client_secret = os.environ['client_secret'],
+    username      = os.environ['username'],
+    password      = os.environ['password']
 )
 
 try:
