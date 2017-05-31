@@ -2,7 +2,6 @@ import client_data
 
 import praw
 import re
-import sys
 
 print("GrammazNaziBot2k loading...")
 
