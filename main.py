@@ -38,9 +38,14 @@ try:
                     os.environ['corrected'] = str(corrected)
 
         except Exception as e:
-            print("Something went wrong ({})".format(type(e)))
-            print(e)
-            time.sleep(60)
+            if 'RATELIMIT: ' in str(e):
+                t = int(str(e).split(' ')[10])
+                print("RATELIMIT exceeded. Sleeping for {}....".format(t))
+                time.sleep(60 * t)
+            else:
+                print("Something went wrong ({})".format(type(e)))
+                print(e)
+                time.sleep(60)
             print("Resuming")
 except KeyboardInterrupt:
     print("User requested termination")
