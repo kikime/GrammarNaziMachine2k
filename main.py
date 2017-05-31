@@ -8,3 +8,7 @@ reddit = praw.Reddit(
     username      = client_data.username,
     password      = client_data.password
     )
+
+for comment in reddit.subreddit('all').stream.comments():
+    print(comment)
+    break
