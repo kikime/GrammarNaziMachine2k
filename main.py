@@ -37,8 +37,9 @@ try:
                     print("Corrected #{}, {} ({})".format(corrected, comment.author.name, comment))
                     os.environ['corrected'] = str(corrected)
 
-        except:
-            print("Something went wrong")
+        except Exception as e:
+            print("Something went wrong ({})".format(type(e)))
+            print(e)
             time.sleep(60)
             print("Resuming")
 except KeyboardInterrupt:
