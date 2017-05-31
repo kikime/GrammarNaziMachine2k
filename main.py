@@ -6,18 +6,7 @@ import praw
 
 print("GrammazNaziBot2k loading...")
 
-corrected = 0
-try:
-    with open("db.txt", 'r') as f:
-        try:
-            corrected = int(f.readline())
-        except ValueError:
-            print("Error reading db.txt. Assuming 0 corrected people.")
-except FileNotFoundError:
-    print("db.txt not found.")
-    print("Creating it.")
-    with open("db.txt", 'w') as f:
-        f.write('0\n')
+corrected = int(os.getenv('corrected', '0'))
 
 print("Already corrected {} people.".format(corrected))
 print("Bot loaded. Let's correct them!")
@@ -41,10 +30,12 @@ try:
                     comment.reply("You may use the *gender-neutral*, *singular* `they` when talking about a person with unknown gender.  \nClick [this](https://en.wikipedia.org/wiki/Singular_they) for more info.  \nI've corrected {} people before you.\n\n^Beep ^blop ^I'm ^a ^bot. ^I ^said ^beep ^blop ^I'm ^a ^bot.  \n^If ^there's ^something ^wrong ^please ^message ^SteveCCL.".format(corrected))
                     corrected += 1
                     print("Corrected #{}, {} ({})".format(corrected, comment.author.name, comment))
+                    os.environ['corrected'] = str(corrected)
                 elif re.search(needs_fix_his_hers, comment.body):
                     comment.reply("You may use the *gender-neutral*, *singular* `their` when talking about a person with unknown gender.  \nClick [this](https://en.wikipedia.org/wiki/Singular_they) for more info.  \nI've corrected {} people before you.\n\n^Beep ^blop ^I'm ^a ^bot. ^I ^said ^beep ^blop ^I'm ^a ^bot.  \n^If ^there's ^something ^wrong ^please ^message ^SteveCCL.".format(corrected))
                     corrected += 1
                     print("Corrected #{}, {} ({})".format(corrected, comment.author.name, comment))
+                    os.environ['corrected'] = str(corrected)
 
         except:
             print("Something went wrong")
@@ -52,8 +43,5 @@ try:
             print("Resuming")
 except KeyboardInterrupt:
     print("User requested termination")
-
-with open("db.txt", 'w') as f:
-    f.write(str(corrected))
 
 print("See you soon")
