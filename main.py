@@ -22,8 +22,8 @@ except FileNotFoundError:
 print("Already corrected {} people.".format(corrected))
 print("Bot loaded. Let's correct them!")
 
-needs_fix_he_she   = re.compile(r'(he\s*(/|\s+or\s+)\s*she|she\s*(/|\s+or\s+)\s*he)', re.IGNORECASE)
-needs_fix_his_hers = re.compile(r'(his\s*(/|\s+or\s+)\s*hers|hers\s*(/|\s+or\s+)\s*his)', re.IGNORECASE)
+needs_fix_he_she   = re.compile(r'\b(he\s*(/|\s+or\s+)\s*she|she\s*(/|\s+or\s+)\s*he)\b', re.IGNORECASE)
+needs_fix_his_hers = re.compile(r'\b(his\s*(/|\s+or\s+)\s*hers|hers\s*(/|\s+or\s+)\s*his)\b', re.IGNORECASE)
 
 reddit = praw.Reddit(
     user_agent    = 'GrammarNaziMachine2k 007 (by /u/SteveCCL)',
