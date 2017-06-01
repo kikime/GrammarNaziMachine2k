@@ -43,7 +43,7 @@ while 1:
     except Exception as e:
         if 'RATELIMIT: ' in str(e):
             t = int(str(e).split(' ')[10])
-            print("RATELIMIT exceeded. Sleeping for {}....".format(t))
+            print("RATELIMIT exceeded. Sleeping for {} minutes....".format(t))
             time.sleep(60 * t)
         else:
             print("Something went wrong ({})".format(type(e)))
