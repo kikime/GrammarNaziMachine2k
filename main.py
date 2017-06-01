@@ -58,7 +58,6 @@ while 1:
 
             reply = generate_reply(comment.body)
             if reply:
-                print("corrected one\n" + reply)
                 comment.reply(reply)
 
     except Exception as e:
