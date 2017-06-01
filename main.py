@@ -4,6 +4,8 @@ import time
 
 import praw
 
+LOG_LEVEL = 2
+
 print("GrammazNaziBot2k loading...")
 
 print("Bot loaded. Let's correct them!")
@@ -24,15 +26,23 @@ def generate_reply(comment):
     reply = ""
     if re.search(needs_fix_he_she, comment):
         reply += "You may use the *gender-neutral*, *singular* `they` instead of `he/she` when talking about a person with unknown gender.  \nClick [this](https://en.wikipedia.org/wiki/Singular_they) for more info.\n\n"
+        if LOG_LEVEL > 1:
+            print("he_she")
 
     if "plug-out" in comment:
         reply += "It's `unplug` not `plug-out` even though I commend you for using that.\n\n"
+        if LOG_LEVEL > 1:
+            print("plug-out")
 
     if re.search(needs_fix_they_is, comment):
         reply += "It's `they are` or `they're` not `they is`.\n\n"
+        if LOG_LEVEL > 1:
+            print("they is")
 
     if "excepted" in comment:
         reply += "It's `accepted` not `excepted`.\n\n"
+        if LOG_LEVEL > 1:
+            print("excepted")
 
     if len(reply) > 0:
         reply += "^Beep ^blop ^I'm ^a ^bot. ^I ^said ^beep ^blop ^I'm ^a ^bot.  \n^If ^there's ^something ^wrong ^please ^message ^SteveCCL."
