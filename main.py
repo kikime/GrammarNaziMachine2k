@@ -24,7 +24,9 @@ needs_fix_they_is  = re.compile(r'\bthey\s+is', re.IGNORECASE)
 def generate_reply(comment):
     """Generates a reply based on the comment. Returns None if there shouldn't be a reply"""
     reply = ""
-    if re.search(needs_fix_he_she, comment):
+    for line in comment.split('\n'):
+        if line.startswith('> '):
+            continue
         reply += "You may use the *gender-neutral*, *singular* `they` instead of `he/she` when talking about a person with unknown gender.  \nClick [this](https://en.wikipedia.org/wiki/Singular_they) for more info.\n\n"
         if LOG_LEVEL > 1:
             print("he_she")
