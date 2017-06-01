@@ -26,12 +26,9 @@ def generate_reply(comment):
     reply = ""
     in_quote = False
     for line in comment.split('\n'):
-        print(line)
         if in_quote or line.startswith('> '):
             in_quote = line.endswith('  ')
             continue
-
-        in_quote = False
 
         if re.search(needs_fix_he_she, comment):
             reply += "You may use the *gender-neutral*, *singular* `they` instead of `he/she` when talking about a person with unknown gender.  \nClick [this](https://en.wikipedia.org/wiki/Singular_they) for more info.\n\n"
