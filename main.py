@@ -22,10 +22,10 @@ def generate_reply(comment):
     """Generates a reply base on the comment. Returns None if there shouldn't be a reply"""
     reply = ""
     if re.search(needs_fix_he_she, comment):
-        reply += "You may use the *gender-neutral*, *singular* `they` instead of `he/she` when talking about a person with unknown gender.  \nClick [this](https://en.wikipedia.org/wiki/Singular_they) for more info."
+        reply += "You may use the *gender-neutral*, *singular* `they` instead of `he/she` when talking about a person with unknown gender.  \nClick [this](https://en.wikipedia.org/wiki/Singular_they) for more info.\n\n"
 
     if len(reply) > 0:
-        reply += "\n\n^Beep ^blop ^I'm ^a ^bot. ^I ^said ^beep ^blop ^I'm ^a ^bot.  \n^If ^there's ^something ^wrong ^please ^message ^SteveCCL."
+        reply += "^Beep ^blop ^I'm ^a ^bot. ^I ^said ^beep ^blop ^I'm ^a ^bot.  \n^If ^there's ^something ^wrong ^please ^message ^SteveCCL."
         return reply
 
     return None
