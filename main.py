@@ -24,6 +24,9 @@ def generate_reply(comment):
     if re.search(needs_fix_he_she, comment):
         reply += "You may use the *gender-neutral*, *singular* `they` instead of `he/she` when talking about a person with unknown gender.  \nClick [this](https://en.wikipedia.org/wiki/Singular_they) for more info.\n\n"
 
+    if "plug-out" in comment:
+        reply += "It's `unplug` not `plug-out` even though I commend you for using that.\n\n"
+
     if len(reply) > 0:
         reply += "^Beep ^blop ^I'm ^a ^bot. ^I ^said ^beep ^blop ^I'm ^a ^bot.  \n^If ^there's ^something ^wrong ^please ^message ^SteveCCL."
         return reply
