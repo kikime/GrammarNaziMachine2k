@@ -41,6 +41,7 @@ while 1:
 
             reply = generate_reply(comment.body)
             if reply:
+                print("corrected one\n" + reply + "\n\n")
                 comment.reply(reply)
 
     except Exception as e:
