@@ -26,18 +26,17 @@ def generate_reply(comment):
     reply = ""
     in_quote = False
     for line in comment.split('\n'):
-        if in_quote:
-            if line.endswith('  '):
-                continue
-        if line.startswith('> '):
-            in_quote = True
+        print(line)
+        if in_quote or line.startswith('> '):
+            in_quote = line.endswith('  ')
             continue
 
         in_quote = False
 
-        reply += "You may use the *gender-neutral*, *singular* `they` instead of `he/she` when talking about a person with unknown gender.  \nClick [this](https://en.wikipedia.org/wiki/Singular_they) for more info.\n\n"
-        if LOG_LEVEL > 1:
-            print("he_she")
+        if re.search(needs_fix_he_she, comment):
+            reply += "You may use the *gender-neutral*, *singular* `they` instead of `he/she` when talking about a person with unknown gender.  \nClick [this](https://en.wikipedia.org/wiki/Singular_they) for more info.\n\n"
+            if LOG_LEVEL > 1:
+                print("he_she")
 
         if "plug-out" in comment:
             reply += "It's `unplug` not `plug-out` even though I commend you for using that.\n\n"
