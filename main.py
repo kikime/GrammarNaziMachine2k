@@ -17,6 +17,7 @@ reddit = praw.Reddit(
 )
 
 needs_fix_he_she   = re.compile(r'\b(he\s*(/|\s+or\s+)\s*she|she\s*(/|\s+or\s+)\s*he)\b', re.IGNORECASE)
+needs_fix_they_is  = re.compile(r'\bthey\s+is', re.IGNORECASE)
 
 def generate_reply(comment):
     """Generates a reply based on the comment. Returns None if there shouldn't be a reply"""
@@ -26,6 +27,9 @@ def generate_reply(comment):
 
     if "plug-out" in comment:
         reply += "It's `unplug` not `plug-out` even though I commend you for using that.\n\n"
+
+    if re.search(needs_fix_they_is, comment):
+        reply += "It's `they are` or `they're` not `they is`.\n\n"
 
     if len(reply) > 0:
         reply += "^Beep ^blop ^I'm ^a ^bot. ^I ^said ^beep ^blop ^I'm ^a ^bot.  \n^If ^there's ^something ^wrong ^please ^message ^SteveCCL."
