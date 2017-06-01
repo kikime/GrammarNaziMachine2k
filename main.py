@@ -31,6 +31,9 @@ def generate_reply(comment):
     if re.search(needs_fix_they_is, comment):
         reply += "It's `they are` or `they're` not `they is`.\n\n"
 
+    if "excepted" in comment:
+        reply += "It's `accepted` not `excepted`.\n\n"
+
     if len(reply) > 0:
         reply += "^Beep ^blop ^I'm ^a ^bot. ^I ^said ^beep ^blop ^I'm ^a ^bot.  \n^If ^there's ^something ^wrong ^please ^message ^SteveCCL."
         return reply
